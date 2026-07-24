@@ -10,7 +10,11 @@ const NAV = [
   { href: "/calendar", label: "Calendar", accent: "bg-lavender/50" },
   { href: "/leetcode", label: "LeetCode", accent: "bg-peach/45" },
   { href: "/backend", label: "Backend", accent: "bg-matcha/35" },
-  { href: "/ai", label: "AI", accent: "bg-lavender/45" },
+  { href: "/ai", label: "AI Engineer", accent: "bg-lavender/45" },
+  { href: "/mlops", label: "MLOps", accent: "bg-matcha/50" },
+  { href: "/architect", label: "Architect", accent: "bg-peach/55" },
+  { href: "/patterns", label: "Design Patterns", accent: "bg-lavender/55" },
+  { href: "/claude", label: "Claude Architect", accent: "bg-butter/60" },
   { href: "/azure", label: "Azure", accent: "bg-butter/70" },
   { href: "/articles", label: "Articles", accent: "bg-peach/40" },
   { href: "/notes", label: "Notes", accent: "bg-lavender/40" },
@@ -25,11 +29,11 @@ export function Sidebar() {
   return (
     <aside className="flex w-full flex-col gap-6 border-b border-[var(--line)] bg-cream/70 px-4 py-5 backdrop-blur md:sticky md:top-0 md:h-screen md:w-64 md:border-b-0 md:border-r md:px-5 md:py-7">
       <div>
-        <p className="font-display text-3xl leading-none tracking-tight text-ink">
-          Career OS
+        <p className="font-display text-3xl leading-none tracking-tight text-ink brand-shimmer">
+          SwitchUp
         </p>
         <p className="mt-2 text-sm text-ink-soft">
-          Cozy prep studio · matcha & paper
+          Level-up studio · matcha & paper
         </p>
       </div>
       <nav className="flex gap-2 overflow-x-auto pb-1 md:flex-col md:overflow-visible md:pb-0">

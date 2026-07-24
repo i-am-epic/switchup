@@ -46,12 +46,12 @@ export function LoginForm() {
       className="grain-panel w-full max-w-md space-y-6 p-8"
     >
       <div className="space-y-2">
-        <p className="font-display text-5xl leading-none tracking-tight">
-          Career OS
+        <p className="font-display text-5xl leading-none tracking-tight brand-shimmer">
+          SwitchUp
         </p>
         <p className="text-ink-soft">
-          Soft paper desk for interview prep. Enter the shared password to open
-          your studio.
+          Soft paper desk for leveling up your career. Enter the shared password
+          to open your studio.
         </p>
       </div>
       <label className="block space-y-2">

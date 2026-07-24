@@ -29,8 +29,8 @@ export default function TodayPage() {
   useEffect(() => {
     void load();
     const onChange = () => void load();
-    window.addEventListener("career-os:tasks-changed", onChange);
-    return () => window.removeEventListener("career-os:tasks-changed", onChange);
+    window.addEventListener("switchup:tasks-changed", onChange);
+    return () => window.removeEventListener("switchup:tasks-changed", onChange);
   }, [load]);
 
   const { needs, todayTasks, laterTasks, minutes } = useMemo(() => {

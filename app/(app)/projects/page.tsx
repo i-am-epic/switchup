@@ -102,7 +102,7 @@ export default function ProjectsPage() {
         {projects.length === 0 ? (
           <EmptyState
             title="No projects"
-            body="Seed Career OS or create a project to hold checklist items."
+            body="Seed SwitchUp or create a project to hold checklist items."
           />
         ) : (
           projects.map((p) => (

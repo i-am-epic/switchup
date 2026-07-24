@@ -13,8 +13,8 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Career OS",
-  description: "A cozy study operating system for interview prep",
+  title: "SwitchUp",
+  description: "A cozy study operating system for switching up your career",
 };
 
 export default function RootLayout({

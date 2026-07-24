@@ -12,6 +12,10 @@ const MODULES = [
   "leetcode",
   "backend",
   "ai",
+  "mlops",
+  "architect",
+  "patterns",
+  "claude",
   "azure",
   "projects",
   "articles",
@@ -67,7 +71,7 @@ export function QuickAdd({ onCreated }: { onCreated?: () => void }) {
       setTitle("");
       setOpen(false);
       onCreated?.();
-      window.dispatchEvent(new Event("career-os:tasks-changed"));
+      window.dispatchEvent(new Event("switchup:tasks-changed"));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not add");
     } finally {

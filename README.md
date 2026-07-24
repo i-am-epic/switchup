@@ -1,6 +1,6 @@
-# Career OS
+# SwitchUp
 
-A cozy Notion-cute study operating system for senior backend + AI interview prep.
+A cozy Notion-cute study operating system for leveling up into senior backend, AI, MLOps & architecture roles.
 
 **Stack:** Next.js (App Router) · Prisma · Supabase Postgres · jose password gate · Fraunces + Nunito UI
 

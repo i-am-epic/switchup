@@ -10,6 +10,10 @@ export const moduleEnum = z.enum([
   "notes",
   "interview",
   "general",
+  "mlops",
+  "architect",
+  "patterns",
+  "claude",
 ]);
 
 export const taskStatusEnum = z.enum(["todo", "doing", "done"]);

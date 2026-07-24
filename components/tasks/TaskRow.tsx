@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import type { ApiTask } from "@/lib/client";
 import { api } from "@/lib/client";
 import { Checkbox } from "@/components/ui/Checkbox";
@@ -60,8 +61,15 @@ export function TaskRow({
   }
 
   return (
-    <div
-      className={`group flex flex-col gap-3 rounded-2xl border border-[var(--line)] bg-cream/70 px-4 py-3 transition hover:bg-cream ${
+    <motion.div
+      layout
+      animate={{
+        backgroundColor: done
+          ? "rgba(122, 168, 107, 0.12)"
+          : "rgba(255, 249, 240, 0.7)",
+      }}
+      transition={{ duration: 0.3 }}
+      className={`group flex flex-col gap-3 rounded-2xl border border-[var(--line)] px-4 py-3 transition-[filter] hover:brightness-[0.985] ${
         busy ? "opacity-70" : ""
       }`}
     >
@@ -70,13 +78,22 @@ export function TaskRow({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <PriorityDot priority={task.priority} />
-            <p
-              className={`font-semibold ${
-                done ? "text-ink-soft line-through" : "text-ink"
-              }`}
-            >
-              {task.title}
-            </p>
+            <span className="relative inline-block">
+              <motion.span
+                className="font-semibold"
+                animate={{ color: done ? "var(--ink-soft)" : "var(--ink)" }}
+                transition={{ duration: 0.3 }}
+              >
+                {task.title}
+              </motion.span>
+              <motion.span
+                aria-hidden
+                className="pointer-events-none absolute left-0 top-1/2 h-[2px] origin-left -translate-y-1/2 rounded-full bg-matcha-deep"
+                initial={false}
+                animate={{ width: done ? "100%" : "0%", opacity: done ? 1 : 0 }}
+                transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </span>
             <DueBadge task={task} today={today} />
             {task.module !== "general" ? (
               <Chip tone="paper">{task.module}</Chip>
@@ -114,6 +131,6 @@ export function TaskRow({
           ) : null}
         </div>
       ) : null}
-    </div>
+    </motion.div>
   );
 }

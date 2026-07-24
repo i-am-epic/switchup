@@ -18,6 +18,10 @@ enum Module {
   notes
   interview
   general
+  mlops
+  architect
+  patterns
+  claude
 }
 
 enum TaskStatus {
