@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Module {
+  leetcode
+  backend
+  ai
+  azure
+  projects
+  articles
+  notes
+  interview
+  general
+}
+
+enum TaskStatus {
+  todo
+  doing
+  done
+}
+
+enum Priority {
+  low
+  medium
+  high
+}
+
+enum InterviewStatus {
+  researching
+  preparing
+  applied
+  interviewing
+  offer
+  rejected
+  withdrawn
+}
+
+model Task {
+  id              String     @id @default(cuid())
+  title           String
+  notes           String?
+  status          TaskStatus @default(todo)
+  priority        Priority   @default(medium)
+  module          Module     @default(general)
+  topic           String?
+  dueDate         DateTime?  @db.Date
+  scheduledFor    DateTime?  @db.Date
+  estimateMinutes Int?
+  completedAt     DateTime?
+  tags            String[]   @default([])
+  order           Int        @default(0)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@index([module, topic])
+  @@index([status, dueDate])
+  @@index([scheduledFor])
+}
+
+model RoadmapTopic {
+  id          String  @id @default(cuid())
+  module      Module
+  name        String
+  description String?
+  order       Int     @default(0)
+
+  @@unique([module, name])
+  @@index([module, order])
+}
+
+model DailyLog {
+  id             String   @id @default(cuid())
+  date           DateTime @unique @db.Date
+  studyMinutes   Int      @default(0)
+  tasksCompleted Int      @default(0)
+}
+
+model Project {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  description String?
+  order       Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Article {
+  id           String    @id @default(cuid())
+  title        String
+  source       String
+  url          String
+  mustRead     Boolean   @default(false)
+  readAt       DateTime?
+  revisionDate DateTime? @db.Date
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Note {
+  id           String    @id @default(cuid())
+  title        String
+  markdown     String    @default("")
+  revisionDate DateTime? @db.Date
+  module       Module?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Interview {
+  id                   String          @id @default(cuid())
+  company              String
+  status               InterviewStatus @default(preparing)
+  dsaPercent           Int             @default(0)
+  systemDesignPercent  Int             @default(0)
+  behavioralPercent    Int             @default(0)
+  resumeDone           Boolean         @default(false)
+  etaDays              Int?
+  notes                String?
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+}
